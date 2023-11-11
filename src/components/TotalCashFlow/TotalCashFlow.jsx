@@ -82,11 +82,6 @@ const TotalCashFlow = () => {
       .call(xAxis);
   };
 
-  const handleNewInvoiceClick = () => {
-    const newData = generateRandomData();
-    drawChart(newData);
-  };
-
   useEffect(() => {
     // Initial render
     const initialData = generateRandomData();
