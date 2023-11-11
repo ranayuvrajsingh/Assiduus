@@ -416,6 +416,7 @@ select {
 tr h5 {
   font-size: 17px;
   margin-left: 60px;
+  font-weight: 700;
 }
 
 tr h6 {
