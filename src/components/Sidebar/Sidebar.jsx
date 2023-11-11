@@ -6,7 +6,7 @@ import Accounts from "../Accounts";
 import Advisor from "../Advisor";
 import Contacts from "../Contacts";
 import Payroll from "../Payroll";
-const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const Sidebar = ({ isSidebarOpen }) => {
   return (
     <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
       <div className="sidebar-content">
