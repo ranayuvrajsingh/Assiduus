@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/global.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faBell, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faBell } from "@fortawesome/free-solid-svg-icons";
 import BarChart from "./BarChart/BarChart";
 import Sidebar from "./Sidebar/Sidebar";
 import LinesChart from "./LinesChart/LinesChart";
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [hasNewNotifications, setHasNewNotifications] = useState(true);
-
-  const toggleProfile = () => {
-    setDropdownVisible(!isDropdownVisible);
-  };
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 

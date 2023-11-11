@@ -21,11 +21,10 @@ const LineChart = () => {
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
-    svg.selectAll("*").remove(); // Clear previous drawings
+    svg.selectAll("*").remove(); // Clear previous
 
-    const barWidth = innerWidth / data.length;
-    const borderRadius = 5; // Set the desired border radius
-
+    // const barWidth = innerWidth / data.length;
+    const borderRadius = 7; // Set the desired border radius
     const xScale = d3
       .scaleBand()
       .domain(data.map((d, i) => i))
@@ -37,7 +36,7 @@ const LineChart = () => {
       .domain([0, d3.max(data)])
       .range([innerHeight, 0]);
 
-    const bars = svg
+    svg
       .selectAll("rect")
       .data(data)
       .enter()
