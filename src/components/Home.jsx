@@ -5,22 +5,32 @@ import { faSearch, faBell } from "@fortawesome/free-solid-svg-icons";
 import BarChart from "./BarChart/BarChart";
 import Sidebar from "./Sidebar/Sidebar";
 import LinesChart from "./LinesChart/LinesChart";
+import TotalCashFlow from "./TotalCashFlow/TotalCashFlow";
+import AccountWatchlist from "./AccountWatchlist/AccountWatchlist";
 
 const Home = () => {
   const [hasNewNotifications, setHasNewNotifications] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [selectedManageValue, setSelectedManageValue] = useState("option1");
+  const [selectedMonthValue, setSelectedMonthValue] = useState("January");
 
   const toggleDropdown = () => {
     console.log("Dropdown toggled");
-    if (hasNewNotifications) {
-      setHasNewNotifications(false);
-    } else {
-      setHasNewNotifications(true);
-    }
+    setHasNewNotifications(!hasNewNotifications);
   };
 
   const handleToggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleManageDropdownChange = (event) => {
+    setSelectedManageValue(event.target.value);
+    window.location.reload();
+  };
+
+  const handleMonthDropdownChange = (event) => {
+    setSelectedMonthValue(event.target.value);
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -80,19 +90,28 @@ const Home = () => {
           <BarChart />
         </div>
         <div className="chart2">
-          <div class="card">
-            <div class="card-body" id="card-body-1">
-              <h5 class="card-title" id="card-title-1">
+          <div className="card">
+            <div className="card-body" id="card-body-1">
+              <h5 className="card-title" id="card-title-1">
                 Checking account
               </h5>
-              <div class="dropdown-container">
-                <select id="manageDropdown">
+
+              <div className="dropdown-container">
+                <select
+                  id="manageDropdown"
+                  value={selectedManageValue}
+                  onChange={handleManageDropdownChange}
+                >
                   <option value="option1">Manage</option>
                   <option value="option2">Option 2</option>
                   <option value="option3">Option 3</option>
                 </select>
 
-                <select id="januaryDropdown">
+                <select
+                  id="januaryDropdown"
+                  value={selectedMonthValue}
+                  onChange={handleMonthDropdownChange}
+                >
                   <option value="January">January</option>
                   <option value="February">February</option>
                   <option value="March">March</option>
@@ -108,32 +127,15 @@ const Home = () => {
                 </select>
               </div>
             </div>
+            <hr />
             <LinesChart />
           </div>
         </div>
         <div className="chart3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Card title3</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <button className="btn btn-primary">Go somewhere</button>
-            </div>
-          </div>
+          <AccountWatchlist />
         </div>
         <div className="chart4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Card title4</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <button className="btn btn-primary">Go somewhere</button>
-            </div>
-          </div>
+          <TotalCashFlow />
         </div>
       </div>
     </div>
