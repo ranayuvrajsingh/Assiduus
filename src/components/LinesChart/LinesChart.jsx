@@ -55,7 +55,7 @@ const LineChart = () => {
 
       setData(newData);
       drawChart(newData);
-    }, 3000); // Update every 2 seconds
+    }, 4000); // Update every 2 seconds
 
     return () => clearInterval(interval); // Clear the interval on component unmount
   }, [data]);
@@ -69,6 +69,7 @@ const LineChart = () => {
         style={{
           marginLeft: "30px",
           marginTop: "20px",
+          // marginBottom: "20px",
         }}
       ></svg>
       <div className="names">

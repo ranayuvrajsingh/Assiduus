@@ -22,11 +22,6 @@ const TotalCashFlow = () => {
 
     svg.selectAll("*").remove(); // Clear previous
 
-    const colorScale = d3
-      .scaleLinear()
-      .domain([0, data.length - 1])
-      .range(["green", "blue"]); // Set your desired colors here
-
     const borderRadius = 7; // Set the desired border radius
     const xScale = d3
       .scaleBand()
@@ -39,6 +34,11 @@ const TotalCashFlow = () => {
       .domain([0, d3.max(data)])
       .range([innerHeight, 0]);
 
+    const colorScale = d3
+      .scaleOrdinal()
+      .domain([0, 1])
+      .range(["#47B747", "#02BA7D"]);
+
     svg
       .selectAll("rect")
       .data(data)
@@ -48,29 +48,7 @@ const TotalCashFlow = () => {
       .attr("y", (d) => yScale(d))
       .attr("width", xScale.bandwidth())
       .attr("height", (d) => innerHeight - yScale(d))
-      .attr("fill", (d, i) => {
-        const gradientId = `gradient-${i}`;
-        const gradient = svg
-          .append("defs")
-          .append("linearGradient")
-          .attr("id", gradientId)
-          .attr("x1", "0%")
-          .attr("y1", "0%")
-          .attr("x2", "100%")
-          .attr("y2", "0%");
-
-        gradient
-          .append("stop")
-          .attr("offset", "0%")
-          .attr("stop-color", colorScale(i));
-
-        gradient
-          .append("stop")
-          .attr("offset", "100%")
-          .attr("stop-color", colorScale(i + 1));
-
-        return `url(#${gradientId})`;
-      })
+      .attr("fill", (d, i) => colorScale(i % 2))
       .attr("rx", borderRadius)
       .attr("ry", borderRadius);
 
