@@ -5,15 +5,13 @@ import { faSearch, faBell } from "@fortawesome/free-solid-svg-icons";
 import BarChart from "./BarChart/BarChart";
 import Sidebar from "./Sidebar/Sidebar";
 import LinesChart from "./LinesChart/LinesChart";
-const Home = () => {
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [hasNewNotifications, setHasNewNotifications] = useState(true);
 
+const Home = () => {
+  const [hasNewNotifications, setHasNewNotifications] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleDropdown = () => {
     console.log("Dropdown toggled");
-    // setDropdownVisible(!isDropdownVisible);
     if (hasNewNotifications) {
       setHasNewNotifications(false);
     } else {
@@ -24,9 +22,9 @@ const Home = () => {
   const handleToggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
   useEffect(() => {
     console.log("Effect is running");
-
     setHasNewNotifications(true);
   }, []);
 
@@ -63,7 +61,7 @@ const Home = () => {
               src="https://i.pinimg.com/736x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg"
               alt=""
             />
-            {isDropdownVisible && (
+            {hasNewNotifications && (
               <div className="dropdown-menu">
                 <ul>
                   <li>Option 1</li>
@@ -75,6 +73,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
       <div className="grid-container">
         <div className="chart"></div>
         <div className="chart1">
