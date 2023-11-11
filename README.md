@@ -1,6 +1,9 @@
 App Link Vercel:https://assiduus-two.vercel.app/
 
 
+App Link Netlify:https://assiduus-clone.netlify.app/
+
+
 
 
 
